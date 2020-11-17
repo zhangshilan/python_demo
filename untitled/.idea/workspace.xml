@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="79b9eb1e-36ce-47bf-86c9-d6cf2590b734" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/../demo_spider_2/dataparser_test/xpath_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo_spider_2/dataparser_test/douban.html" beforeDir="false" afterPath="$PROJECT_DIR$/../demo_spider_2/dataparser_test/douban.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo_spider_2/note" beforeDir="false" afterPath="$PROJECT_DIR$/../demo_spider_2/note" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_test/note" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_test/request_1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_test/request_baidu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_test/request_drug.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_test/request_kfc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_test/request_sogou.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../request_test/resquest_douban.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1kOkgnLy53lOLINHf92ZsnbWV82" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="79b9eb1e-36ce-47bf-86c9-d6cf2590b734" name="默认更改列表" comment="" />
+      <created>1605579138989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605579138989</updated>
+      <workItem from="1605579140207" duration="34000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="461" y="164" key="SettingsEditor" timestamp="1605579167845">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605579167845" />
+  </component>
+</project>
