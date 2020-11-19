@@ -4,6 +4,8 @@
 
 1.协程（微线程）：一种用户态内的上下文切换技术，即通过一个线程实现代码块互相切换执行
 协程不是计算机提供，是程序员人为创造。
+
+意义：在一个线程中遇到IO等待，线程会利用等待的时间去干其他事情。
 实现方法：
     -greenlet，早期模块
     -yield关键字
@@ -85,3 +87,53 @@ tasks = [
 ]
 loop = asyncio.get_event_loop()
 loop.run_until_complete(asyncio.wait(tasks))
+
+2.异步编程
+2.1 事件循环
+理解成一个死循环，去检测执行某些代码
+#伪代码
+任务列表 = [任务1，任务2，任务3，...]
+
+while True:
+    可执行的任务列表，已完成的任务列表 = 去任务列表中检查所有的任务，将‘可执行’和‘已完成’的任务返回
+
+    for 就绪任务 in 可执行任务列表：
+        执行已就绪的任务
+
+    for 已完成的任务 in 已完成的任务列表：
+        在任务列表中移除已完成的任务
+
+    如果 任务列表中的任务都已完成，则终止循环
+
+2.2 关键字async
+协程函数： 函数定义  async def 函数名
+协程对象： 执行协程函数得到的对象
+注意：执行协程函数创建协程对象，函数内部代码不会执行
+执行函数内部代码，必须将协程对象交给事件循环来处理
+import asyncio
+
+async def func():
+    print("")
+
+result = func()
+
+#loop = asyncio.get_event_loop()
+#loop.run_until_complete(result)
+asyncio.run(result)   #python 3.7以后
+
+2.3 await关键字
+await +可等待的对象（协程对象，future对象，Task对象 -> IO等待）
+示例1：
+import asyncio
+
+async def func():
+    print("")
+    response = await asyncio.sleep(2)
+    print("finish",response)
+
+result = func()
+
+#loop = asyncio.get_event_loop()
+#loop.run_until_complete(result)
+asyncio.run(result)   #python 3.7以后
+
