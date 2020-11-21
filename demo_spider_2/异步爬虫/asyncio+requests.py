@@ -6,7 +6,7 @@
 
 import asyncio
 import requests
-import os
+
 
 async def download_image(url):
     print("开始下载",url)

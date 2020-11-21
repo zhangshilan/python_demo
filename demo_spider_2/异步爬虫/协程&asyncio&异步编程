@@ -315,3 +315,12 @@ async def func():
         print((result)
 
 asyncio.run(func())
+
+2.9 uvloop
+asyncio的事件循环（默认asyncio的事件循环）替代方案
+import asyncio
+import uvloop
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+#与之前代码一样
+asyncio.run(...)
