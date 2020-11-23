@@ -55,10 +55,11 @@ class Chaojiying_Client(object):
 
 from selenium import webdriver
 import time
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver import ActionChains
 from PIL import Image
 
 bro = webdriver.Chrome(executable_path='./chromedriver.exe')
+bro.maximize_window()
 bro.get('https://kyfw.12306.cn/otn/resources/login.html')
 time.sleep(2)
 a_tag = bro.find_element_by_class_name('login-hd-account')
@@ -72,6 +73,43 @@ size = code_img_ele.size
 rangle = (int(location['x']),int(location['y']),int(location['x']+size['width']),int(location['y']+size['height']))
 
 i = Image.open('./a.png')
-code_img_name = 'code.png'
+code_img_name = './code.png'
 frame = i.crop(rangle)
 frame.save(code_img_name)
+
+chaojiying = Chaojiying_Client('shilan', 'zhangshilan1995', '910025')
+im = open('code.png', 'rb').read()
+result = chaojiying.PostPic(im, 9004)['pic_str']
+all_list = []
+if '|' in result:
+    list_1 = result.split('|')
+    count_1 = len(list_1)
+    for i in range(count_1):
+        xy_list = []
+        x = int(list_1[i].split(',')[0])
+        y = int(list_1[i].split(',')[1])
+        xy_list.append(x)
+        xy_list.append(y)
+        all_list.append(xy_list)
+
+else:
+    x = int(result.split(',')[0])
+    y = int(result.split(',')[1])
+    xy_list = []
+    xy_list.append(x)
+    xy_list.append(y)
+    all_list.append(xy_list)
+print(xy_list)
+for l in all_list:
+    x = l[0]
+    y = l[1]
+    ActionChains(bro).move_to_element_with_offset(code_img_ele,x,y).click().perform()
+    time.sleep(2)
+
+bro.find_element_by_id('J-userName').send_keys('xxxxxx')
+time.sleep(1)
+bro.find_element_by_id('J-password').send_keys('xxxxx')
+time.sleep(1)
+bro.find_element_by_id('J-login').click()
+time.sleep(5)
+bro.quit()
