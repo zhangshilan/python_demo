@@ -17,21 +17,26 @@ if __name__ == '__main__':
     }
     if not os.path.exists('./PPTLibs'):
         os.mkdir('./PPTLibs')
-    base_url = "https://sc.chinaz.com/ppt/free_25.html"
-    response = requests.get(url = base_url,headers =header)
-    response.encoding = 'utf-8'
-    page_text = response.text
-    tree = etree.HTML(page_text)
-    div_list = tree.xpath('//div[@id = "main"]/div/div')
-    for div_tree in div_list:
-        new_url = "http:"+div_tree.xpath('./a/@href')[0]
-        name = div_tree.xpath('./p/a/text()')[0]+'.rar'
-        new_text = requests.get(url = new_url,headers = headers).text
-        new_tree = etree.HTML(new_text)
-        download_url = new_tree.xpath('//div[@class = "clearfix mt20 downlist"]/ul/li[4]/a/@href')[0]
-        file = requests.get(url = download_url,headers = headers).content
-        filepath = 'PPTLibs/'+name
-        with open(filepath,'wb') as fp:
-            fp.write(file)
-            print(name,"下载成功！")
+    base_url = "http://www.1ppt.com/moban/jianjie/ppt_jianjie_1.html"
+    for num in range(5):
+        response = requests.get(url = base_url ,headers =header)
+        # response.encoding = 'utf-8'
+        page_text = response.text
+        tree = etree.HTML(page_text)
+        print(page_text)
+        li_list = tree.xpath('/html/body/div[6]/dl/dd/ul/li')
+        for li_tree in li_list:
+            new_url = "http://www.1ppt.com"+li_tree.xpath('./a/@href')[0]
+            name = li_tree.xpath('./h2/a/text()')[0]+'.rar'
+            new_text = requests.get(url = new_url,headers = headers).text
+            new_tree = etree.HTML(new_text)
+            download_url = "http://www.1ppt.com"+new_tree.xpath('/html/body/div[5]/div[1]/dl/dd/ul[1]/li/a/@href')[0]
+            file_text = requests.get(url = download_url,headers = headers).text
+            file_tree = etree.HTML(file_text)
+            file_url = file_tree.xpath('/html/body/dl/dd/ul[2]/li[1]/a/@href')
+            file = requests.get(url = file_url,headers = headers).content
+            filepath = 'PPTLibs/'+name
+            with open(filepath,'wb') as fp:
+                fp.write(file)
+                print(name,"下载成功！")
 

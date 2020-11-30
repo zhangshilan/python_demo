@@ -1,0 +1,23 @@
+scrapy框架
+-什么是框架？
+    -集成了很多功能的具有很强通用性的项目模板。
+-如何学习框架？
+    -专门学习框架封装的各种功能的详细用法。
+-什么是scrapy？
+    -爬虫中封装好的明星框架。功能：高性能的持久化存储，异步的数据下载，高性能的数据解析，分布式。
+
+-scrapy框架的基本使用
+    -环境的安装：
+        -wheel
+        -twisted
+        -pywin32
+        -scrapy
+    -创建你一个工程：scrapy startproject xxxPro
+    -cd xxxPro
+    -在spiders子目录中创建一个爬虫文件
+        - scrapy genspider spiderName www.xxx.com
+    -执行工程：
+        -scrapy crawl spiderName
+
+-scrapy数据解析
+    -
