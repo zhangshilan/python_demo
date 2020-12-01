@@ -18,6 +18,24 @@ scrapy框架
         - scrapy genspider spiderName www.xxx.com
     -执行工程：
         -scrapy crawl spiderName
-
+    -修改robotstxt，进行UA伪装
 -scrapy数据解析
+
+-scrapy持久化存储
+    -基于终端指令：
+        -要求：只可以将parse方法的返回值存储到本地文本文件中
+        -注意：对应的文本文件的类型只能为：json,jsonlines,jl,csv,xml,marshal,pickle
+        -指令：scrapy crawl xxx -o filePath
+        -优点：简洁高效快捷；缺点：局限性强，只能将数据存储到指定后缀的文本文件中
+    -基于管道：
+        -编码流程：
+            -数据解析
+            -在item类中定义相关的属性
+            -将解析的数据封装存储到item类型的对象中
+            -将item类型的对象提交给管道进行持久化存储的操作
+            -在管道类的procecss_item中要将其接受到的item对象中存储的数据进行持久化存储操作
+            -在配置文件中开启管道
+        -通用性强
+
+-基于spider的全站数据爬取
     -
