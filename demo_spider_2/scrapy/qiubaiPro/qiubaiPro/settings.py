@@ -65,7 +65,7 @@ LOG_LEVEL = 'ERROR'
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'qiubaiPro.pipelines.QiubaiproPipeline': 300,   #300表示优先级，数值越小优先级越高
-   # 'qiubaiPro.pipelines.mysqlPileLine': 301,
+   'qiubaiPro.pipelines.mysqlPileLine': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
