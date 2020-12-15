@@ -1,4 +1,4 @@
-# Scrapy settings for middlePro project
+# Scrapy settings for wangyiPro project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,19 +7,19 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'middlePro'
+BOT_NAME = 'wangyiPro'
 
-SPIDER_MODULES = ['middlePro.spiders']
-NEWSPIDER_MODULE = 'middlePro.spiders'
+SPIDER_MODULES = ['wangyiPro.spiders']
+NEWSPIDER_MODULE = 'wangyiPro.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'middlePro (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-# LOG_LEVEL = 'ERROR'
+LOG_LEVEL = 'ERROR'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'middlePro.middlewares.MiddleproSpiderMiddleware': 543,
+#    'wangyiPro.middlewares.WangyiproSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'middlePro.middlewares.MiddleproDownloaderMiddleware': 543,
+   'wangyiPro.middlewares.WangyiproDownloaderMiddleware': 543,
 }
 
 # Enable or disable extensions
@@ -64,9 +64,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'middlePro.pipelines.MiddleproPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'wangyiPro.pipelines.WangyiproPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
