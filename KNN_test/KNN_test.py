@@ -5,48 +5,33 @@
 #@Software :PyCharm
 
 from sklearn.datasets import load_iris
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
+import pandas as pd
+import mglearn
 import matplotlib.pyplot as plt
-from sklearn.neighbors import KNeighborsClassifier
-from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+from KNN import KNN
 
-iris = load_iris()
-x = iris.data
-y = iris.target
-k_range = range(1,31)
-k_error = []
-for k in k_range:
-    knn = KNeighborsClassifier(n_neighbors=k)
-    scores = cross_val_score(knn,x,y,cv=5,scoring='accuracy')
-    #5:1划分训练集和验证集，进行交叉验证得出评估分数
-    #print("%d:%s" % (k,scores))
-    k_error.append(1-scores.mean())
+if __name__ == '__main__':
+    iris = load_iris()
 
-#plt.plot(k_range,k_error)
-#plt.xlabel('Value of K for KNN')
-#plt.ylabel('Error')
-#plt.show()
-'''
-上述代码求出不同k取值对误差的影响
-'''
-K = {num:i for i,num in enumerate(k_error)}[min(k_error)]
-#print(n_neighbors)
-#将k_error中最小值的下标取出，将它作为K（代码参考Leecode:Two Sum）
-figure = plt.figure().add_subplot(projection='3d')
-figure.scatter(x[:,0],x[:,1],x[:,2],c=y)
-figure.set_xlabel("1st eigenvector")
-figure.set_ylabel("2nd eigenvector")
-figure.set_zlabel("3rd eigenvector")
-#三维图形绘制
-clf = KNeighborsClassifier(n_neighbors = K)
+    # 从使用train_test_split，利用随机种子random_state采样25%的数据作为测试集。
+    X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2,random_state=0)
+    iris_dataframe = pd.DataFrame(X_train, columns=iris.feature_names)
+    # 按y_train着色
+    grr = pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o',
+                                     hist_kwds={'bins': 20}, s=60, alpha=.8, cmap=mglearn.cm3)
+    # plt.show()
 
-X = x[:,:3]
-clf.fit(X,y)
+    x_train = (X_train - np.min(X_train,axis = 0)) / (np.max(X_train,axis = 0)) - np.min(X_train,axis = 0)
+    x_test = (X_test - np.min(X_test, axis=0)) / (np.max(X_test, axis=0)) - np.min(X_test, axis=0)
 
-point = [[7.1,3,4]]
+    clf = KNN(k = 5)
+    clf.fit(x_train,y_train)
+    y_train_pred = clf.predict(x_train)
+    print('train accuracy : {:.3}'.format(clf.score(y_train,y_train_pred)))
+    y_test_pred = clf.predict(x_test)
+    # print(y_test_pred)
+    # print(y_test)
+    print('test accuracy : {:.3}'.format(clf.score(y_test,y_test_pred)))
 
-answer = clf.predict(point)
-figure.scatter(point[0][0],point[0][1],point[0][2],c = 'r')
-print("结果是：%d" % answer)
-plt.show()
-#预测输入点，并且输出结果
